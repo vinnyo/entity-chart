@@ -1,0 +1,112 @@
+// ---------------------------------------- //
+// Typography
+// ---------------------------------------- //
+@use 'sass:math';
+
+$roma-font-stack: 'Roboto', 'Open Sans', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+    Arial, sans-serif;
+
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+
+$font-size-12: 12px;
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
+$font-weight-lighter: 100;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-bolder: 900;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+ul,
+input,
+th,
+tr,
+td,
+label {
+    font-family: $roma-font-stack;
+    font-weight: $font-weight-normal;
+}
+
+h1 {
+    font-size: $h1-font-size;
+    margin: math.div($h1-font-size, 1.25) 0;
+}
+
+h2 {
+    font-size: $h2-font-size;
+    margin: math.div($h2-font-size, 1.25) 0;
+}
+
+h3 {
+    font-size: $h3-font-size;
+    margin: math.div($h3-font-size, 1.25) 0;
+}
+
+h4 {
+    font-size: $h4-font-size;
+    margin: math.div($h4-font-size, 1.25) 0;
+}
+
+h5 {
+    font-size: $h5-font-size;
+    margin: math.div($h5-font-size, 1.25) 0;
+}
+
+h6 {
+    font-size: $h6-font-size;
+    margin: math.div($h6-font-size, 1.25) 0;
+}
+
+// Helper classes for defining certain types of text elements.
+.headline {
+    font-size: 24pt;
+    font-weight: $font-weight-normal;
+}
+
+.title {
+    font-size: 20pt;
+    font-weight: $font-weight-medium;
+}
+
+.subheader {
+    font-size: 16pt;
+    font-weight: $font-weight-normal;
+}
+
+.body-text-1 {
+    font-size: 14pt;
+    font-weight: $font-weight-normal;
+}
+
+.body-text-2 {
+    font-size: 14pt;
+    font-weight: $font-weight-medium;
+}
+
+.caption {
+    font-size: 12pt;
+    font-weight: $font-weight-normal;
+}
+
+.hr-separator {
+    height: 1px;
+    width: 100%;
+    background: #e0e0e0;
+    border-width: 0pt;
+}

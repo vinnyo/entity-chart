@@ -1,0 +1,41 @@
+@if (node) {
+    <padua-chart-node
+        ngClass="ngx-org-{{ direction }}"
+        [node]="node"
+        [hasParent]="hasParent"
+        [parent]="parent"
+        [direction]="direction"
+        (itemClick)="itemClick.emit($event)"
+        [nodeTemplate]="nodeTemplate"
+    >
+    </padua-chart-node>
+}
+
+@if (node?.childs?.length) {
+    <div ngClass="ngx-org-reports-{{ direction }}" class="ngx-org-reports">
+        @for (childNode of node?.childs; track childNode; let isFirst = $first; let isLast = $last) {
+            <div ngClass="ngx-org-org-container-{{ direction }}" class="ngx-org-org-container">
+                <div ngClass="ngx-org-connector-container-{{ direction }}" class="ngx-org-connector-container">
+                    <div
+                        class="ngx-org-connector ngx-org-border"
+                        [style.border-color]="isFirst ? 'transparent' : ''"
+                    ></div>
+                    <div class="ngx-org-border"></div>
+                    <div
+                        class="ngx-org-connector ngx-org-border"
+                        [style.border-color]="isLast ? 'transparent' : ''"
+                    ></div>
+                </div>
+                <padua-chart-connector
+                    [node]="childNode"
+                    [hasParent]="true"
+                    [parent]="node"
+                    [direction]="direction"
+                    [nodeTemplate]="nodeTemplate"
+                    (itemClick)="itemClick.emit($event)"
+                >
+                </padua-chart-connector>
+            </div>
+        }
+    </div>
+}

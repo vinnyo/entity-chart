@@ -1,0 +1,71 @@
+<div class="relative w-full h-full">
+    <div class="g-column gap-2 w-full h-full">
+        <div class="g-row items-center justify-center gap-4 bg-gray-100 px-2">
+            <padua-carousel
+                class="g-w-fill"
+                [headingEnabled]="false"
+                [selectItemOnNavigate]="false"
+                (itemSelected)="onSelectItem($event)"
+            >
+                @for (node of nodes; track node; let i = $index) {
+                    <padua-carousel-item [selected]="node.name === selectedRoot?.name">
+                        <ng-template carousel-label>
+                            <div class="g-column items-center py-2">
+                                <span class="text-base font-semibold">{{ node.name }}</span>
+                                <span class="text-xs italic">{{ node.type }}</span>
+                            </div>
+                        </ng-template>
+                    </padua-carousel-item>
+                }
+            </padua-carousel>
+            <button
+                class="g-row gap-2 items-center h-[60px] rounded-lg my-3 p-3 border-2 border-dashed opacity-75 hover:opacity-100 border-gray-500 text-gray-500"
+                [matMenuTriggerFor]="menu"
+            >
+                <i class="pd_icon-plus-circle"></i>
+                <span class="text-sm">Associate Entity</span>
+            </button>
+            <mat-menu #menu="matMenu">
+                @for (op of associateEntitiesOptions; track op) {
+                    <button mat-menu-item (click)="doAssociateEntity(op)">
+                        <span>{{ op }}</span>
+                    </button>
+                }
+            </mat-menu>
+        </div>
+
+        <div class="g-row justify-end px-2">
+            <mat-button-toggle-group class="g-button-toggle sm" [(ngModel)]="orientation">
+                <mat-button-toggle [checked]="true" value="vertical">Vertical</mat-button-toggle>
+                <mat-button-toggle value="horizontal">Horizontal</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+        <div class="g-row items-center justify-center overflow-auto w-full min-h-[500px]">
+            <padua-org-chart [nodes]="[selectedRoot]" [direction]="orientation">
+                <ng-template #nodeTemplate let-data="data">
+                    <padua-node-content
+                        [node]="data.node"
+                        [direction]="data.direction"
+                        [parent]="data.parent"
+                    ></padua-node-content>
+                </ng-template>
+            </padua-org-chart>
+        </div>
+    </div>
+    @if (focusNode$ | async) {
+        <div
+            (click)="clearFocusNode()"
+            class="absolute inset-0 h-full w-full bg-gray-200 transition-on {{
+                (focusNode$ | async) ? 'opacity-75' : 'opacity-0'
+            }}"
+        ></div>
+    }
+    <div
+        class="absolute left-0 top-0 bottom-0 bg-white border-l w-[500px] transition-on {{
+            (focusNode$ | async) ? 'translate-x-0 shadow-lg z-10' : 'translate-x-[-500px] -z-10 opacity-0'
+        }}"
+    >
+        <padua-chart-details></padua-chart-details>
+    </div>
+</div>

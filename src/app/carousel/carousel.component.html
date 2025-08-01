@@ -1,0 +1,80 @@
+<div class="g-column w-full py-2 rounded-md">
+    @if (headingEnabled && selectedItem) {
+        <div class="g-row w-full px-6 py-2">
+            @if (selectedItem.templateHeading) {
+                <ng-template [cdkPortalOutlet]="selectedItem.templateHeading"></ng-template>
+            } @else {
+                <div class="g-row-center justify-center">
+                    <span class="heading-3">{{ selectedItem.label }}</span>
+                </div>
+            }
+        </div>
+    }
+    <div class="g-row items-stretch overflow-hidden w-full justify-center">
+        @if (isScrollable) {
+            <div class="g-row items-center mat-elevation-z5 z-10">
+                <button
+                    matRipple
+                    class="rounded-full g-button-link"
+                    [disabled]="selectItemOnNavigate && selectedIndex === 0"
+                    (click)="onLeftClicked()"
+                >
+                    <i class="pd_icon-arrow-left text-2xl"></i>
+                </button>
+            </div>
+        }
+        <div
+            class="g-row overflow-hidden"
+            padua-scrollable
+            (scrollableStateChange)="onScrollingChanged($event)"
+            #itemsContainer
+        >
+            <div class="g-row">
+                @for (item of items; track item; let i = $index) {
+                    <div
+                        matRipple
+                        class="g-row flex-nowrap whitespace-nowrap items-center px-4 py-1 first:rounded-l last:rounded-r {{
+                            item.itemClass
+                        }} {{
+                            selectedIndex === i
+                                ? 'bg-product text-product-contrast'
+                                : 'bg-white border-gray-100 hover:bg-gray-50 hover:border-gray-200'
+                        }} border text-xs cursor-pointer"
+                        #itemRef
+                        (click)="onItemClicked(i)"
+                    >
+                        @if (item.templateLabel) {
+                            <ng-template [cdkPortalOutlet]="item.templateLabel"></ng-template>
+                        } @else {
+                            {{ item.label }}
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+        @if (isScrollable) {
+            <div class="g-row items-center mat-elevation-z5 z-10">
+                <button
+                    matRipple
+                    class="rounded-full g-button-link"
+                    [disabled]="selectItemOnNavigate && selectedIndex + 1 === totalItems"
+                    (click)="onRightClicked()"
+                >
+                    <i class="pd_icon-arrow-right text-2xl"></i>
+                </button>
+            </div>
+        }
+    </div>
+    @if (dotNavEnabled && isScrollable) {
+        <div class="g-row-center justify-center gap-2 mt-3">
+            @for (item of items; track item; let i = $index) {
+                <div
+                    (click)="onItemClicked(i)"
+                    class="transition-all rounded-full h-2 w-2 {{
+                        selectedIndex === i ? 'bg-product' : 'bg-gray-300'
+                    }} hover:bg-product cursor-pointer"
+                ></div>
+            }
+        </div>
+    }
+</div>

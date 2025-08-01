@@ -1,0 +1,16 @@
+@if (hasParent) {
+    <div class="ngx-org-border ngx-org-connector-{{ direction }}"></div>
+}
+@if (nodeTemplate) {
+    <ng-container *ngTemplateOutlet="nodeTemplate; context: { data: { node, direction, parent } }"></ng-container>
+} @else {
+    <div class="ngx-org-box ngx-org-border bg-white">
+        <div>
+            <div class="font-semibold">{{ node?.name }}</div>
+            <div class="text-xs italic">{{ node?.type }}</div>
+        </div>
+    </div>
+}
+@if (node?.childs?.length) {
+    <div class="ngx-org-border ngx-org-action-connector-{{ direction }}"></div>
+}

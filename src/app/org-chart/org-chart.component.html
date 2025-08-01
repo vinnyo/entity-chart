@@ -1,0 +1,16 @@
+<div class="relative p-4 g-column items-center justify-center">
+    @if (nodes?.length) {
+        <div class="{{ direction === 'vertical' ? 'g-row' : 'g-column' }}">
+            @for (node of nodes; track node) {
+                <div class="ngx-org-self-{{ direction }}">
+                    <padua-chart-connector
+                        [node]="node"
+                        [direction]="direction"
+                        (itemClick)="itemClick.emit($event)"
+                        [nodeTemplate]="nodeTemplate"
+                    ></padua-chart-connector>
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,7 @@
+<div [ngClass]="className" class="notification" matSnackbarLabel>
+    <mat-icon class="notification__icon">{{ icon }}</mat-icon>
+    <div class="notification__message" [innerHtml]="message"></div>
+    <div class="self-end">
+        <button class="notification__button" color="primary" (click)="csbRef.dismiss()">{{ action }}</button>
+    </div>
+</div>

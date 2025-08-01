@@ -1,0 +1,20 @@
+<div class="flex items-center justify-between gap-2 px-4 border-b w-full h-[68px]">
+    <span class="heading-3">{{ title }}</span>
+    <button class="rounded-full hover:bg-gray-100 size-8" matRipple mat-dialog-close>
+        <i class="pd_icon-close-x"></i>
+    </button>
+</div>
+<div class="p-4 max-h-[calc(100vh_-_200px)] overflow-auto">
+    <mat-form-field appearance="outline" class="w-full">
+        <input matInput #elementRef [formControl]="formControl" (keydown.enter)="onConfirm()" />
+        <mat-hint>
+            <span [innerHTML]="message"></span>
+        </mat-hint>
+    </mat-form-field>
+</div>
+<div class="g-row-center justify-end gap-2 py-3 px-4 border-t">
+    <button class="g-button-secondary" mat-dialog-close>Cancel</button>
+    <button class="g-button" [disabled]="formControl.invalid" (click)="onConfirm()" [mat-dialog-close]="true">
+        {{ action | titlecase }}
+    </button>
+</div>

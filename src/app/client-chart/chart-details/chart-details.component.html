@@ -1,0 +1,40 @@
+@if (focusNode$ | async; as node) {
+    <div class="g-column h-full">
+        <padua-node-content
+            class="-mr-2 shadow rounded-r-md"
+            [node]="node"
+            [direction]="direction"
+            [parent]="parent"
+            [viewMode]="true"
+        ></padua-node-content>
+        <div class="flex-1 min-h-0">
+            @if (enableDocumentsList.includes(node.type)) {
+                <mat-tab-group class="g-tab">
+                    <mat-tab label="Discover">
+                        <div class="g-row items-center justify-center h-14">
+                            <span>Discover documents listing...</span>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Compare">
+                        <div class="g-row items-center justify-center h-14">
+                            <span>Compare documents listing...</span>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Recommend">
+                        <div class="g-row items-center justify-center h-14">
+                            <span>Recommend documents listing...</span>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            } @else {
+                <div class="g-row-center justify-center h-full min-h-[200px]">
+                    <span>Placeholder content.</span>
+                </div>
+            }
+        </div>
+        <div class="g-action-row justify-end gap-4 p-2">
+            <button class="g-button-secondary" (click)="handleDelete()">Delete</button>
+            <button class="g-button-secondary" (click)="handleClose()">Close</button>
+        </div>
+    </div>
+}

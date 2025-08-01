@@ -1,0 +1,34 @@
+// ---------------------------------------- //
+// Spacing
+// ---------------------------------------- //
+
+$base-spacing-size: 16px;
+
+$space-025: $base-spacing-size * 0.25; // 4px
+$space-05: $base-spacing-size * 0.5; // 8px
+$space-075: $base-spacing-size * 0.75; // 12px
+$space-125: $base-spacing-size * 1.25; // 20px
+$space-1: $base-spacing-size; // 16px
+$space-2: $base-spacing-size * 2; // 32px
+$space-3: $base-spacing-size * 3; // 48px
+$space-4: $base-spacing-size * 4; // 64px
+$space-6: $base-spacing-size * 6; // 96px
+$space-8: $base-spacing-size * 8; // 128px
+$space-12: $base-spacing-size * 12; // 192px
+$space-16: $base-spacing-size * 16; // 256px
+$space-24: $base-spacing-size * 24; // 384px
+$space-32: $base-spacing-size * 32; // 512px
+$space-40: $base-spacing-size * 40; // 640px
+$space-48: $base-spacing-size * 48; // 768px
+
+// half page vertical
+$advert-hpv-w: 300px;
+$advert-hpv-h: 600px;
+
+// large leaderboard
+$advert-lglb-w: 970px;
+$advert-lglb-h: 90px;
+
+//sponsored content
+$advert-sc-w: 300px;
+$advert-sc-h: 90px;

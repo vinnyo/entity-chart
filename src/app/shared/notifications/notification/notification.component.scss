@@ -1,0 +1,128 @@
+.notification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 6px;
+
+    &__icon {
+        margin-right: 16px;
+    }
+
+    &__button {
+        margin-left: 16px;
+        background-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
+        border-width: 0 !important;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 800;
+    }
+
+    &__message {
+        font-size: 14px;
+        font-family: Roboto, "Open Sans", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+        & > span.bold {
+            font-weight: 800;
+        }
+    }
+
+    &.success {
+        background-color: #ecf4ec !important;
+        border: 1px solid #388e3d;
+
+        .notification__icon,
+        .notification__button,
+        .notification__message {
+            color: #388e3d;
+        }
+    }
+
+    &.success-solid {
+        background-color: #388e3d !important;
+        border: 1px solid #388e3d;
+
+        .notification__icon,
+        .notification__button,
+        .notification__message {
+            color: #fff;
+        }
+    }
+
+    &.warning {
+        background-color: #fef2ec !important;
+        border: 1px solid #f27440;
+
+        .notification__icon,
+        .notification__message {
+            color: #f27440;
+        }
+
+        .notification__button {
+            color: #007282;
+        }
+    }
+
+    &.warning-solid {
+        background-color: #f27440 !important;
+        border: 1px solid #f27440;
+
+        .notification__icon,
+        .notification__button,
+        .notification__message {
+            color: #fff;
+        }
+    }
+
+    &.info {
+        background-color: #e6f3fc !important;
+        border: 1px solid #0082db;
+
+        .notification__icon,
+        .notification__message {
+            color: #0082db;
+        }
+
+        .notification__button {
+            color: #007282;
+        }
+    }
+
+    &.info-solid {
+        background-color: #0082db !important;
+        border: 1px solid #0082db;
+
+        .notification__icon,
+        .notification__button,
+        .notification__message {
+            color: #fff;
+        }
+    }
+
+    &.error {
+        background-color: #fde9e9 !important;
+        border: 1px solid #e42020;
+
+        .notification__icon,
+        .notification__message {
+            color: #e42020;
+        }
+
+        .notification__button {
+            color: #007282;
+        }
+    }
+
+    &.error-solid {
+        background-color: #e42020 !important;
+        border: 1px solid #e42020;
+
+        .notification__icon,
+        .notification__button,
+        .notification__message {
+            color: #fff;
+        }
+    }
+}

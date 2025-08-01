@@ -1,0 +1,951 @@
+@use "@angular/material" as mat;
+@import "../scss/roma";
+@import "./colours";
+
+/**
+ * This file is applied directly to the style sheet provided by index.html.
+ * It overrides various pieces of core style rules provided by the Angular Material library.
+ *
+ * Any time you want to make a change to some default Material styling in a global context (aka not view encapsulated),
+ * modify this file accordingly.
+ *
+ * @NOTE: Rules specified in this file apply _everywhere_, regardless of view encapsulation, so modify wisely.
+
+ */
+
+/*
+    The colours in this theme will mostly be overriden by styles set in styles.scss.
+    In the event that an element is not styled correctly, it will fallback to the deafult colours set here.
+ */
+@include mat.elevation-classes();
+@include mat.app-background();
+$padua-home-teal: (
+  50: #f2f8f9,
+  100: #e5f1f2,
+  150: #cce3e6,
+  200: #bfdce0,
+  300: #99c7cd,
+  400: #73b1ba,
+  500: #5fa6b0,
+  600: #268795,
+  700: #007282,
+  800: #006775,
+  900: #005b68,
+  A100: #f2f8f9,
+  A200: #f2f8f9,
+  A400: #f2f8f9,
+  A700: #f2f8f9,
+  contrast: (
+    50: #007282,
+    100: #007282,
+    200: #007282,
+    300: #007282,
+    400: #007282,
+    500: #f2f8f9,
+    600: #f2f8f9,
+    700: #f2f8f9,
+    800: #f2f8f9,
+    900: #f2f8f9,
+    A100: #007282,
+    A200: #f2f8f9,
+    A400: #f2f8f9,
+    A700: #f2f8f9,
+  ),
+);
+$padua-home-teal-palette: mat.m2-define-palette(
+  $padua-home-teal,
+  600,
+  900,
+  150
+);
+$padua-default-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $padua-home-teal-palette,
+      accent: $padua-home-teal-palette,
+    ),
+    typography: mat.m2-define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.elevation-classes();
+@include mat.app-background();
+@include mat.all-component-themes($padua-default-theme);
+@include mat.form-field-density(-3);
+@include mat.icon-button-density(-3);
+@include mat.radio-density(-2);
+@include mat.tree-density(-2);
+@include mat.button-toggle-density(-2);
+@include mat.option-density(-3);
+@include mat.optgroup-density(-3);
+
+/* MDC SCSS variables*/
+:root {
+  --mat-dialog-subhead-font: "Roboto";
+  --mat-dialog-subhead-line-height: 20px;
+  --mat-dialog-subhead-size: 20px;
+  --mat-dialog-supporting-text-tracking: normal;
+  --mat-typography-button-letter-spacing: normal;
+  --mat-button-protected-label-text-tracking: normal;
+  --mat-option-label-text-size: 15px;
+
+  --mat-optgroup-label-text-size: 15px;
+  --mat-optgroup-label-text-weight: 300;
+}
+
+.mat-mdc-tab-header {
+  --mat-tab-label-text-tracking: normal;
+}
+
+.mat-mdc-form-field {
+  --mat-form-field-filled-active-indicator-color: rgba(0, 0, 0, 0.2);
+  --mat-form-field-outlined-outline-color: rgba(0, 0, 0, 0.1);
+  --mat-form-field-outlined-focus-outline-color: var(--s-primary);
+}
+
+.mat-mdc-slide-toggle.mat-accent {
+  --mat-slide-toggle-selected-focus-state-layer-color: var(--product-primary);
+  --mat-slide-toggle-selected-handle-color: var(--product-primary);
+  --mat-slide-toggle-selected-hover-state-layer-color: var(--product-primary);
+  --mat-slide-toggle-selected-pressed-state-layer-color: var(--product-primary);
+  --mat-slide-toggle-selected-focus-handle-color: var(--product-dark);
+  --mat-slide-toggle-selected-hover-handle-color: var(--product-dark);
+  --mat-slide-toggle-selected-pressed-handle-color: var(--product-dark);
+  --mat-slide-toggle-selected-focus-track-color: var(--product-border);
+  --mat-slide-toggle-selected-hover-track-color: var(--product-border);
+  --mat-slide-toggle-selected-pressed-track-color: var(--product-border);
+  --mat-slide-toggle-selected-track-color: var(--product-border);
+}
+
+.mat-select-panel mat-option.mat-option {
+  height: unset;
+}
+
+.mat-option-text.mat-option-text {
+  white-space: normal;
+}
+
+.header-less-tabs .mat-tab-group .mat-tab-header {
+  display: none;
+}
+
+.mat-tab-header {
+  margin-bottom: 16px;
+}
+
+/** Override Mat Form Field Sizes **/
+mat-form-field.mat-mdc-form-field {
+  font-size: $font-size-base;
+
+  & .mdc-notched-outline__notch {
+    border-right: none;
+  }
+}
+
+.mat-card-subtitle,
+.mat-card-content {
+  font-size: $font-size-base;
+}
+
+.mat-tab-label {
+  font-size: $font-size-base;
+}
+
+/** Fix for checkboxes not wrapping correctly. **/
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.mat-radio-label {
+  white-space: normal !important;
+}
+
+app-popover-renderer mat-form-field .mat-form-field-infix {
+  width: inherit;
+}
+
+.right-aligned-header > .mat-content {
+  justify-content: space-between;
+}
+
+.mat-content > mat-panel-title,
+.mat-content > mat-panel-description {
+  flex: 0 0 auto;
+}
+
+.mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky;
+  /* For macOS/iOS Safari */
+  top: 0;
+  /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
+}
+
+.mat-toolbar span a {
+  text-decoration: none;
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.mat-error-override {
+  font-family: $roma-font-stack;
+  font-size: 14px;
+}
+
+/**
+ * This class applies a static pixel width to `mat-form-field`s. We don't want that in various cases, so ensure the
+ * style is correctly inherited.
+ */
+div .drag-drop-container .mat-form-field-infix {
+  width: inherit;
+}
+
+/* fix for autocomplete, long text taking more height PT-640 */
+.mat-autocomplete-panel mat-option.mat-option {
+  height: auto;
+}
+
+/* fix for inputs expanding past containing div for PLAT-49 */
+.separated-dollar-percentage-percentage,
+.separated-dollar-percentage-dollar {
+  & > .mat-form-field-wrapper {
+    width: 90%;
+    bottom: 10px;
+
+    & .mat-form-field-infix {
+      width: 70%;
+    }
+  }
+}
+
+.search-field {
+  background-color: $light-primary-text;
+  margin: 0;
+  min-width: 408px;
+  border-radius: 22px;
+  padding: 9px 8px;
+  border: 1px solid #bdbdbd;
+
+  & > div.mat-form-field-wrapper {
+    padding: 0 !important;
+
+    .mat-form-field-underline {
+      display: none;
+    }
+
+    .mat-form-field-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .mat-form-field-infix {
+        padding: 0 0 0 16px;
+        width: 100%;
+        border-width: 0 !important;
+
+        .mat-form-field-label-wrapper {
+          padding-top: 0 !important;
+          top: 0;
+          left: 16px;
+
+          .mat-form-field-label {
+            top: 0;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .mat-form-field-prefix {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .mat-icon {
+          width: 24px;
+          height: 24px;
+          font-size: 24px;
+          color: $teal-600 !important;
+        }
+
+        span[class^="pd_icon-"] {
+          font-size: 24px;
+          color: $teal-600 !important;
+        }
+      }
+    }
+  }
+}
+
+.about-you-accordion {
+  .mat-expansion-panel {
+    box-shadow: none !important;
+    border: 1px solid #d7d7d7;
+
+    .mat-expansion-panel-header {
+      &.mat-expanded {
+        border-bottom: 1px solid #d7d7d7;
+      }
+
+      .mat-expansion-panel-header-title {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      &:hover {
+        &:not([aria-disabled="true"]) {
+          background-color: $light-primary-text !important;
+        }
+      }
+    }
+  }
+}
+
+.client-edit,
+.dependant-edit,
+.entity-container,
+.goals-and-objective__edit {
+  .mat-button-wrapper {
+    padding: 0 !important;
+    line-height: 14px !important;
+
+    .mat-icon {
+      height: 16px;
+      width: 16px;
+      font-size: 16px;
+    }
+  }
+}
+
+.client-view-container__applink {
+  &.white {
+    color: $grey-1;
+  }
+
+  &.light-blue {
+    color: $blue-2-new;
+  }
+
+  &.blue {
+    color: $blue-2;
+  }
+
+  &.green {
+    color: $green-900;
+  }
+
+  &.purple {
+    color: $deep-purple-800;
+  }
+
+  &.green-invert {
+    color: $light-primary-text;
+  }
+
+  &.dark-blue {
+    color: $blue-900;
+  }
+
+  &.red {
+    color: $red-700;
+  }
+
+  &.light-green {
+    color: $green-300;
+  }
+
+  &.compare-padua-100 {
+    color: $compare-padua-100;
+  }
+
+  &.recommend-red {
+    color: $red-600;
+  }
+}
+
+.cdk-column-expandedDetail {
+  padding: 0 !important;
+}
+
+.historical-details-accordion {
+  .mat-expansion-panel {
+    &:not(.mat-expanded) {
+      .mat-expansion-panel-header {
+        &:hover {
+          &.light-blue {
+            background-color: $blue-2-new !important;
+          }
+
+          &.blue {
+            background-color: $blue-2 !important;
+          }
+
+          &.green {
+            background-color: $green-800 !important;
+          }
+
+          &.purple {
+            background-color: $deep-purple-800 !important;
+          }
+
+          &.dark-blue {
+            background-color: $blue-800 !important;
+          }
+
+          &.red {
+            background-color: $red-700 !important;
+          }
+
+          &.light-green {
+            background-color: $green-300 !important;
+          }
+
+          &.recommend-red {
+            background-color: $red-600 !important;
+          }
+        }
+
+        *.mat-expanded {
+          height: 48px !important;
+
+          &:hover {
+            &.light-blue {
+              background-color: $blue-2-new !important;
+            }
+
+            &.blue {
+              background-color: $blue-2 !important;
+            }
+
+            &.green {
+              background-color: $green-800 !important;
+            }
+
+            &.purple {
+              background-color: $deep-purple-800 !important;
+            }
+
+            &.dark-blue {
+              background-color: $blue-800 !important;
+            }
+
+            &.red {
+              background-color: $red-700 !important;
+            }
+
+            &.light-green {
+              background-color: $green-300 !important;
+            }
+
+            &.recommend-red {
+              background-color: $red-600 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mat-expansion-panel-header {
+    .mat-content {
+      justify-content: space-between;
+      align-items: center;
+
+      .mat-expansion-panel-header-title {
+        color: $light-primary-text;
+        font-weight: bold;
+      }
+    }
+
+    .mat-expansion-indicator {
+      &::after {
+        border-color: $light-primary-text;
+      }
+    }
+
+    &.mat-expanded {
+      height: 48px !important;
+    }
+
+    &.light-blue {
+      background-color: $blue-2-new !important;
+    }
+
+    &.purple {
+      background-color: $deep-purple-800 !important;
+    }
+
+    &.deep-purple {
+      background-color: $deep-purple-800 !important;
+    }
+
+    &.blue {
+      background-color: $blue-2 !important;
+    }
+
+    &.green {
+      background-color: $green-800 !important;
+    }
+
+    &.dark-blue {
+      background-color: $blue-800 !important;
+    }
+
+    &.red {
+      background-color: $red-700 !important;
+    }
+
+    &.light-green {
+      background-color: $green-300 !important;
+    }
+
+    &.compare-padua-100 {
+      background-color: $compare-padua-100 !important;
+    }
+
+    &.recommend-red {
+      background-color: $red-600 !important;
+    }
+  }
+}
+
+.application-accordion-panel {
+  .mat-expansion-panel-content {
+    .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+}
+
+table.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.mat-table tr:last-child td {
+  border-bottom: 0 solid;
+}
+
+tr.client-data-row:not(.client-expanded-row):hover {
+  background-color: $teal-100;
+
+  & > .mat-cell {
+    border-bottom-color: $teal-600 !important;
+
+    .action-button-wrapper {
+      visibility: visible !important;
+    }
+  }
+}
+
+tr.client-data-row:not(.client-expanded-row):active {
+  background-color: $teal-100;
+}
+
+tr.client-expanded-row {
+  & > .mat-cell {
+    background-color: $teal-100;
+
+    .mat-icon-button {
+      .mat-button-wrapper {
+        color: $teal-600 !important;
+      }
+    }
+  }
+}
+
+.application-accordion-panel__conetent {
+  .mat-column-action {
+    .mat-icon-button {
+      .mat-button-wrapper {
+        color: $compare-padua-100 !important;
+      }
+    }
+  }
+}
+
+.client-view-container {
+  .mat-sort-header-arrow {
+    color: $teal-600 !important;
+  }
+
+  .mat-button-focus-overlay {
+    display: none;
+  }
+}
+
+.about-you__drop-area,
+.your-entities__drop-area,
+.risk-profiles__drop-area,
+.goals-and-objectives__drop-area {
+  .cdk-drop-list-dragging .cdk-drag {
+    color: $teal-600;
+    background-color: #eaf5ff;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .cdk-drag-preview {
+    justify-content: center !important;
+    padding: 0 !important;
+    background-color: #eaf5ff;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.entity-dialog-container {
+  .mat-dialog-container {
+    background-color: $light-primary-text;
+    border: 1px solid $teal-000;
+  }
+}
+
+.create-client-container,
+.create-person-dialog-container,
+.create-dependant-dialog-container {
+  .mat-dialog-container {
+    border: 1px solid #cce3e6;
+  }
+}
+
+.create-client-container {
+  .mat-dialog-container {
+    background-color: $light-primary-text;
+    border: 1px solid $teal-100;
+  }
+
+  .mat-form-field-underline {
+    background-color: #bdbdbd !important;
+  }
+
+  .mat-form-field {
+    margin-bottom: 16px;
+  }
+}
+
+.error-dialog {
+  .mat-dialog-container {
+    border-color: #f03a47;
+  }
+}
+
+.suffix {
+  color: $teal-600 !important;
+}
+
+.client-view-container__button {
+  .mat-button-wrapper {
+    height: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+  }
+}
+
+.client-view-container__tabs {
+  .mat-tab-header {
+    border-bottom-color: #d5eafa;
+
+    .mat-tab-label-container {
+      .mat-tab-list {
+        .mat-tab-labels {
+          flex-direction: row;
+          justify-content: space-between;
+
+          .mat-tab-label {
+            min-width: auto !important;
+            padding: 0 !important;
+            background-color: transparent !important;
+
+            .mat-tab-label-content {
+              color: #212121 !important;
+              font-size: 14px !important;
+              font-weight: 400;
+              line-height: 1 !important;
+            }
+          }
+        }
+
+        .mat-ink-bar {
+          background-color: $teal-600;
+        }
+      }
+    }
+
+    .mat-tab-header-pagination {
+      box-shadow: none !important;
+
+      .mat-tab-header-pagination-chevron {
+        border-color: $teal-600;
+      }
+
+      &.mat-tab-header-pagination-disabled {
+        .mat-tab-header-pagination-chevron {
+          border-color: #d5eafa;
+        }
+      }
+    }
+  }
+
+  .mat-tab-body-wrapper {
+    flex-grow: 1;
+  }
+}
+
+.strategy-contributions-caps-dialog {
+  .mat-ink-bar {
+    background-color: rgba(163, 21, 107, 1) !important;
+  }
+}
+
+.advice-types {
+  .mat-checkbox-background {
+    background: #007282 !important;
+  }
+}
+
+.subnavigation {
+  &.mat-mdc-list {
+    .mat-mdc-list-item {
+      height: auto;
+      padding: 0;
+
+      .mdc-list-item__content {
+        padding: 0;
+        position: relative;
+      }
+    }
+  }
+}
+
+.about-you__drop-area,
+.your-entities__drop-area,
+.risk-profiles__drop-area,
+.goals-and-objectives__drop-area {
+  .cdk-drag-placeholder {
+    opacity: 0;
+    display: none !important;
+  }
+}
+
+.mat-snack-bar-container {
+  &.confirmation-snackbar,
+  &.notification {
+    background-color: transparent !important;
+    padding: 0 !important;
+    min-height: auto !important;
+    max-width: 50vw;
+  }
+}
+
+.asset-allocation {
+  &__item {
+    & > .mat-list-item-content {
+      width: 100%;
+      justify-content: space-between;
+      padding: 0 !important;
+
+      & > h6,
+      span {
+        margin: 0;
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.risk-profile-menu {
+  .mat-icon-button {
+    .mat-button-wrapper {
+      color: $teal-600 !important;
+    }
+  }
+}
+
+.mat-sort-header-container {
+  border-bottom-width: 0 !important;
+}
+
+.go__priority {
+  & .mat-button-toggle {
+    & .mat-button-toggle-button {
+      & .mat-button-toggle-label-content {
+        font-size: 14px;
+        color: $grey-1;
+        line-height: 32px !important;
+      }
+    }
+  }
+
+  & .low-option.mat-button-toggle-checked {
+    & .mat-button-toggle-button {
+      & .mat-button-toggle-label-content {
+        color: $light-primary-text;
+      }
+    }
+  }
+
+  & .medium-option.mat-button-toggle-checked {
+    & .mat-button-toggle-button {
+      & .mat-button-toggle-label-content {
+        color: $light-primary-text;
+      }
+    }
+  }
+
+  & .high-option.mat-button-toggle-checked {
+    & .mat-button-toggle-button {
+      & .mat-button-toggle-label-content {
+        color: $light-primary-text;
+      }
+    }
+  }
+}
+
+.go__fullwidth {
+  width: 100%;
+
+  & .mat-form-field-underline {
+    background-color: #bdbdbd !important;
+  }
+}
+
+.go__icon {
+  svg {
+    width: 80px;
+    height: 80px;
+    fill: $deep-purple-800 !important;
+  }
+}
+
+.goals-and-objective__image {
+  svg {
+    width: 62px;
+    height: 62px;
+    fill: $deep-purple-800 !important;
+  }
+}
+
+.subnavigation {
+  .subnavigation__link,
+  .subnavigation__placeholder-icon {
+    .subnavigation__icon {
+      svg {
+        fill: $teal-600 !important;
+      }
+
+      &.objective {
+        svg {
+          width: 38px;
+          height: 38px;
+          fill: $teal-600 !important;
+        }
+      }
+    }
+  }
+}
+
+.entity-container {
+  .entity-container__image {
+    svg {
+      fill: $teal-600 !important;
+    }
+  }
+}
+
+.create-dependant-container__radio-group {
+  .mat-radio-button {
+    .mat-radio-ripple {
+      .mat-ripple-element {
+        opacity: 0 !important;
+        background-color: $teal-600 !important;
+      }
+    }
+
+    .mat-radio-inner-circle {
+      background-color: $teal-600 !important;
+    }
+
+    &.mat-radio-checked {
+      .mat-radio-outer-circle {
+        border-color: $teal-600 !important;
+      }
+    }
+  }
+}
+
+.highlight {
+  color: #007282;
+}
+
+.cdk-overlay-container {
+  z-index: 3000;
+}
+
+.inline-editor {
+  &__container {
+    & > editor {
+      & > .mce-content-body {
+        &:focus-visible {
+          outline-color: var(--primary-color) !important;
+          outline-width: 6px !important;
+          outline-style: solid !important;
+          outline-offset: 10px;
+        }
+      }
+    }
+  }
+}
+
+.background-highlight {
+  background-color: $teal-600 !important;
+  color: $light-primary-text !important;
+
+  .section-wrapper__nested {
+    background-color: $teal-600 !important;
+    color: $light-primary-text !important;
+  }
+}
+
+.mce-content-body table[data-mce-selected],
+.mce-content-body video[data-mce-selected] {
+  outline: 0px solid #ffffff !important;
+}
+
+.mce-item-table:not([border]),
+.mce-item-table:not([border]) td,
+.mce-item-table:not([border]) th {
+  border-width: 0 !important;
+  border-bottom: 1px solid #cce3e6 !important;
+}
+
+.mce-item-table[border="0"] td {
+  border-width: 0 !important;
+}
+
+.mce-item-table[border="0"] {
+  border-width: 0 !important;
+}
+
+.palermo-generate-documents-dialog {
+  .mat-tab-body-content {
+    overflow: hidden !important;
+  }
+}
+
+.mat-expansion-indicator::after {
+  border-color: rgba(0, 0, 0, 0.54);
+}
+
+table-widget .mat-mdc-standard-chip {
+  --mat-chip-label-text-color: white;
+}

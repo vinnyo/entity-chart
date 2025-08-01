@@ -41,16 +41,16 @@ export class ClientChartComponent implements OnInit {
 
   nodes: any = [
     {
-      name: 'Sundar Family',
+      name: 'Doe Family',
       type: NodeType.Family,
       childs: [
         {
-          name: 'Thomas Sundar',
+          name: 'John Sundar',
           type: NodeType.Client1,
           childs: [],
         },
         {
-          name: 'Thomas and Jenny',
+          name: 'Anne and John',
           type: NodeType.Joint,
           childs: [
             {
@@ -58,11 +58,11 @@ export class ClientChartComponent implements OnInit {
               type: NodeType.Dependants,
               childs: [
                 {
-                  name: 'Kamila Sundar',
+                  name: 'Mimi Doe',
                   type: NodeType.Dependant,
                 },
                 {
-                  name: 'Sonia Sundar',
+                  name: 'Sonia Doe',
                   type: NodeType.Dependant,
                 },
               ],
@@ -70,14 +70,14 @@ export class ClientChartComponent implements OnInit {
           ],
         },
         {
-          name: 'Jenny Dean',
+          name: 'Anne Doe',
           type: NodeType.Client2,
           childs: [],
         },
       ],
     },
     {
-      name: 'Jenny Saloon',
+      name: "Anne's Hair Saloon",
       type: NodeType.Company,
       childs: [
         {
@@ -85,7 +85,7 @@ export class ClientChartComponent implements OnInit {
           type: NodeType.Stakeholders,
           childs: [
             {
-              name: 'Thomas Sundar',
+              name: 'Anne Doe',
               type: NodeType.Stakeholder,
             },
             {
@@ -97,7 +97,7 @@ export class ClientChartComponent implements OnInit {
       ],
     },
     {
-      name: 'Sundar Sundry',
+      name: 'Doe Sundry',
       type: NodeType.Company,
       childs: [
         {
@@ -105,7 +105,7 @@ export class ClientChartComponent implements OnInit {
           type: NodeType.Stakeholders,
           childs: [
             {
-              name: 'Jenny Dean',
+              name: 'John Doe',
               type: NodeType.Stakeholder,
             },
             {

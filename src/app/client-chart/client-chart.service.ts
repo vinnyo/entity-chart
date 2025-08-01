@@ -16,7 +16,7 @@ export class ClientChartService {
   }
 
   public setFocusNode(node?: ClientChartNode) {
-    if (node) this.focusNode = node;
+    this.focusNode = node;
   }
 
   public getFocusNode() {

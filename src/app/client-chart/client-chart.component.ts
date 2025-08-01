@@ -45,7 +45,7 @@ export class ClientChartComponent implements OnInit {
       type: NodeType.Family,
       childs: [
         {
-          name: 'John Sundar',
+          name: 'John Doe',
           type: NodeType.Client1,
           childs: [],
         },
